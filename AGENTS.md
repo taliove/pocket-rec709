@@ -4,7 +4,9 @@
 
 ## 项目概览
 
-`D-Log Converter` 是一个 Tauri 2 + React 19 跨平台桌面应用，用于把 DJI Pocket 4 D-Log 视频批量转换为 Rec.709。视频处理通过调用系统 FFmpeg 实现，应用本体保持极小体积（~12MB）。
+`Pocket Rec.709` 是一个 Tauri 2 + React 19 跨平台桌面应用，用于把 DJI Pocket 4 D-Log 视频批量转换为 Rec.709。视频处理通过调用系统 FFmpeg 实现，应用本体保持极小体积（~12MB）。
+
+GitHub: <https://github.com/taliove/pocket-rec709>
 
 ## 目录结构
 
