@@ -2,8 +2,8 @@
 
 # Pocket Rec.709
 
-**Drag-and-drop batch converter for DJI D-Log videos.**
-**Tiny native desktop app that applies the official Rec.709 LUT via system FFmpeg.**
+**DJI D-Log 视频拖拽式批量转换工具**
+**调用系统 FFmpeg 应用官方 Rec.709 LUT 的极简跨平台桌面应用**
 
 [![License](https://img.shields.io/github/license/taliove/pocket-rec709?color=blue&style=flat-square)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/taliove/pocket-rec709?display_name=tag&style=flat-square&color=success)](https://github.com/taliove/pocket-rec709/releases/latest)
@@ -23,35 +23,35 @@
 [![Windows](https://img.shields.io/badge/Windows-x64-0078D6?style=flat-square&logo=windows&logoColor=white)](https://github.com/taliove/pocket-rec709/releases)
 [![Linux](https://img.shields.io/badge/Linux-x64-FCC624?style=flat-square&logo=linux&logoColor=black)](https://github.com/taliove/pocket-rec709/releases)
 
-**English** · [简体中文](README.zh-CN.md)
+[English](README.md) · **简体中文**
 
 </div>
 
 ---
 
-## ✨ Features
+## ✨ 特性
 
-- 🎬 **Drag-and-drop batch conversion** — Drop multiple D-Log clips, hit Convert, walk away
-- 🍎 **Native macOS look** — Auto Light/Dark mode, native title bar
-- 🎨 **Three output codecs** — H.264 / H.265 / ProRes 422 HQ with quality slider
-- 📦 **Tiny binary** — Just ~12MB; uses system FFmpeg for encoding
-- 🌍 **6 languages** — Auto-detect & manual switch: English, 简体中文, 繁體中文, 日本語, 한국어
-- 🎞️ **Built-in LUT** — DJI Pocket 4 D-Log → Rec.709 (official 33×33×33 3D CUBE)
+- 🎬 **拖拽即用，批量转换** — 把多个 D-Log 视频拖进窗口，点开始转换，剩下交给它
+- 🍎 **macOS 原生外观** — 自动适配 Light/Dark，原生标题栏
+- 🎨 **三种输出编码** — H.264 / H.265 / ProRes 422 HQ，配 CRF 质量滑块
+- 📦 **极小体积** — 应用本体仅 ~12MB，借用系统 FFmpeg 完成编码
+- 🌍 **6 种语言** — 自动检测 + 手动切换：English / 简体中文 / 繁體中文 / 日本語 / 한국어
+- 🎞️ **内置官方 LUT** — DJI Pocket 4 D-Log → Rec.709（33×33×33 3D CUBE）
 
-## 📥 Download
+## 📥 下载
 
-Grab the build for your platform from the [Releases page](https://github.com/taliove/pocket-rec709/releases/latest):
+从 [Releases 页面](https://github.com/taliove/pocket-rec709/releases/latest)选择你的平台：
 
-| Platform | File |
-|----------|------|
+| 平台 | 文件 |
+|------|------|
 | macOS (Apple Silicon) | `*_aarch64.dmg` |
 | macOS (Intel) | `*_x64.dmg` |
-| Windows | `*_x64-setup.exe` or `*_x64_en-US.msi` |
-| Linux | `*_amd64.AppImage` or `*_amd64.deb` |
+| Windows | `*_x64-setup.exe` 或 `*_x64_en-US.msi` |
+| Linux | `*_amd64.AppImage` 或 `*_amd64.deb` |
 
-## 🛠 Prerequisite
+## 🛠 前置要求
 
-Install FFmpeg on your system:
+请先安装 FFmpeg：
 
 ```bash
 # macOS
@@ -64,34 +64,34 @@ winget install ffmpeg
 sudo apt install ffmpeg
 ```
 
-## 🚀 Usage
+## 🚀 用法
 
-1. Launch **Pocket Rec.709**
-2. Drop one or more D-Log video files into the window (MP4 / MOV / MKV / MXF / M4V / MTS / M2TS)
-3. Pick an output codec at the bottom:
-   - **H.264** (default) — Best compatibility, fastest encoding
-   - **H.265** — Smaller files, better quality, slightly slower
-   - **ProRes 422 HQ** — Pro-grade format for further editing
-4. Adjust the Quality slider (lower CRF = higher quality, larger file)
-5. Click **Convert N files** to start
-6. Output files are saved next to the source with a `_rec709` suffix
+1. 启动 **Pocket Rec.709**
+2. 把一个或多个 D-Log 视频文件拖入窗口（支持 MP4 / MOV / MKV / MXF / M4V / MTS / M2TS）
+3. 在底部选择输出编码：
+   - **H.264**（默认）— 兼容性最好、编码最快
+   - **H.265** — 文件更小、画质更优，编码稍慢
+   - **ProRes 422 HQ** — 后期友好的专业格式
+4. 用 Quality 滑块调整 CRF（数值越小画质越好，文件越大）
+5. 点击 **Convert N files** 开始
+6. 输出文件保存在源文件同目录，文件名追加 `_rec709` 后缀
 
-You can **Cancel** anytime — partially-written files are auto-deleted. Hover any completed row to **Reveal** the output in Finder/Explorer.
+转换中可点击 **Cancel** 中止，半成品文件会自动清理。完成后悬停文件行可点击 **Reveal** 在 Finder / 资源管理器中定位输出。
 
-## 💻 Development
+## 💻 开发
 
 ```bash
 npm install
-npm run tauri dev      # Start dev server
-npm run tauri build    # Build production bundle
+npm run tauri dev      # 启动开发模式
+npm run tauri build    # 打包发布版本
 ```
 
-Build artifacts land in `src-tauri/target/release/bundle/`.
+构建产物位于 `src-tauri/target/release/bundle/`。
 
-## 📦 Releasing
+## 📦 发布流程
 
-1. Bump the version in `package.json`, `src-tauri/tauri.conf.json`, and `src-tauri/Cargo.toml`
-2. Commit and tag:
+1. 更新版本号：`package.json` / `src-tauri/tauri.conf.json` / `src-tauri/Cargo.toml`
+2. 提交并打 tag：
 
 ```bash
 git commit -am "chore: bump version to 1.x.x"
@@ -99,20 +99,20 @@ git tag v1.x.x
 git push origin main --tags
 ```
 
-GitHub Actions will:
+GitHub Actions 将自动：
 
-- Build for **macOS (ARM + Intel)**, **Windows x64**, and **Linux x64** in parallel
-- Create a draft Release and upload all installers
-- Auto-publish the Release once every job succeeds
+- 并行构建 **macOS (ARM + Intel)**、**Windows x64**、**Linux x64** 安装包
+- 创建 Release 草稿并上传所有产物
+- 全部成功后自动转为正式发布
 
-You can also trigger the workflow manually from the **Actions → Release → Run workflow** menu.
+你也可以在 **Actions → Release → Run workflow** 手动触发。
 
-## 🧱 Tech Stack
+## 🧱 技术栈
 
-- **Frontend**: React 19 + TypeScript + Tailwind CSS + Vite
-- **Backend**: Tauri 2 (Rust)
-- **Video engine**: System FFmpeg (app stays at ~12MB)
-- **LUT**: Bundled 33×33×33 3D CUBE file as resource
+- **前端**：React 19 + TypeScript + Tailwind CSS + Vite
+- **后端**：Tauri 2 (Rust)
+- **视频引擎**：系统 FFmpeg（应用本体仅 ~12MB）
+- **LUT**：内置 33×33×33 3D CUBE 文件作为资源
 
 ## 📄 License
 
