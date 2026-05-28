@@ -8,6 +8,8 @@ use tokio::sync::Mutex;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    let _ = fix_path_env::fix();
+
     let state = Arc::new(Mutex::new(ConversionState::default()));
 
     tauri::Builder::default()

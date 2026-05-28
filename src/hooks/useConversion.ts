@@ -71,12 +71,16 @@ function reducer(state: State, action: Action): State {
         ...state,
         isConverting: true,
         batchResult: null,
-        files: state.files.map((f) => ({
-          ...f,
-          status: "queued" as const,
-          progress: 0,
-          error: undefined,
-        })),
+        files: state.files.map((f) =>
+          f.status === "done"
+            ? f
+            : {
+                ...f,
+                status: "queued" as const,
+                progress: 0,
+                error: undefined,
+              }
+        ),
       };
     case "PROGRESS":
       return {
@@ -233,9 +237,10 @@ export function useConversion() {
   }, []);
 
   const start = useCallback(async () => {
-    if (state.files.length === 0) return;
+    const pending = state.files.filter((f) => f.status !== "done");
+    if (pending.length === 0) return;
     dispatch({ type: "START_CONVERTING" });
-    const paths = state.files.map((f) => f.path);
+    const paths = pending.map((f) => f.path);
     await startConversion(paths, state.settings.codec, state.settings.crf);
   }, [state.files, state.settings]);
 
