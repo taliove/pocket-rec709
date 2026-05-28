@@ -31,6 +31,7 @@ type Action =
   | { type: "SET_THUMB"; payload: { id: string; thumbnail: string } }
   | { type: "REMOVE_FILE"; payload: string }
   | { type: "CLEAR_FILES" }
+  | { type: "CLEAR_DONE" }
   | { type: "START_CONVERTING" }
   | { type: "PROGRESS"; payload: ConversionProgress }
   | { type: "COMPLETE"; payload: ConversionComplete }
@@ -66,6 +67,12 @@ function reducer(state: State, action: Action): State {
       };
     case "CLEAR_FILES":
       return { ...state, files: [], batchResult: null };
+    case "CLEAR_DONE":
+      return {
+        ...state,
+        files: state.files.filter((f) => f.status !== "done"),
+        batchResult: null,
+      };
     case "START_CONVERTING":
       return {
         ...state,
@@ -236,6 +243,10 @@ export function useConversion() {
     dispatch({ type: "CLEAR_FILES" });
   }, []);
 
+  const clearDone = useCallback(() => {
+    dispatch({ type: "CLEAR_DONE" });
+  }, []);
+
   const start = useCallback(async () => {
     const pending = state.files.filter((f) => f.status !== "done");
     if (pending.length === 0) return;
@@ -257,6 +268,7 @@ export function useConversion() {
     addFiles,
     removeFile,
     clearFiles,
+    clearDone,
     start,
     cancel,
     updateSettings,

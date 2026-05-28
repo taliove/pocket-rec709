@@ -43,6 +43,9 @@ export interface Strings {
     convertN: (n: number) => string;
     cancel: string;
     clear: string;
+    allDone: string;
+    clearDone: string;
+    clearAll: string;
   };
   result: {
     summary: (succeeded: number, total: number) => string;
@@ -94,6 +97,9 @@ const en: Strings = {
     convertN: (n) => `Convert ${n} ${n === 1 ? "file" : "files"}`,
     cancel: "Cancel",
     clear: "Clear",
+    allDone: "All Done",
+    clearDone: "Clear Completed",
+    clearAll: "Clear All",
   },
   result: {
     summary: (s, t) => `${s} of ${t} converted`,
@@ -145,6 +151,9 @@ const zhCN: Strings = {
     convertN: (n) => `转换 ${n} 个文件`,
     cancel: "取消",
     clear: "清空",
+    allDone: "全部完成",
+    clearDone: "清空已完成",
+    clearAll: "清空全部",
   },
   result: {
     summary: (s, t) => `${t} 个文件中已完成 ${s} 个`,
@@ -196,6 +205,9 @@ const zhTW: Strings = {
     convertN: (n) => `轉換 ${n} 個檔案`,
     cancel: "取消",
     clear: "清空",
+    allDone: "全部完成",
+    clearDone: "清空已完成",
+    clearAll: "清空全部",
   },
   result: {
     summary: (s, t) => `${t} 個檔案中已完成 ${s} 個`,
@@ -247,6 +259,9 @@ const ja: Strings = {
     convertN: (n) => `${n} 件を変換`,
     cancel: "キャンセル",
     clear: "クリア",
+    allDone: "すべて完了",
+    clearDone: "完了をクリア",
+    clearAll: "すべてクリア",
   },
   result: {
     summary: (s, t) => `${t} 件中 ${s} 件が完了`,
@@ -298,6 +313,9 @@ const ko: Strings = {
     convertN: (n) => `${n}개 변환`,
     cancel: "취소",
     clear: "지우기",
+    allDone: "모두 완료",
+    clearDone: "완료 항목 지우기",
+    clearAll: "모두 지우기",
   },
   result: {
     summary: (s, t) => `${t}개 중 ${s}개 완료`,

@@ -17,6 +17,7 @@ function App() {
     addFiles,
     removeFile,
     clearFiles,
+    clearDone,
     start,
     cancel,
     updateSettings,
@@ -55,6 +56,8 @@ function App() {
   }
 
   const hasFiles = files.length > 0;
+  const pendingCount = files.filter((f) => f.status !== "done").length;
+  const doneCount = files.filter((f) => f.status === "done").length;
 
   return (
     <div className="h-screen w-screen flex flex-col">
@@ -100,9 +103,11 @@ function App() {
             onStart={start}
             onCancel={cancel}
             onClear={clearFiles}
+            onClearDone={clearDone}
             isConverting={isConverting}
             hasFiles={hasFiles}
-            fileCount={files.length}
+            pendingCount={pendingCount}
+            doneCount={doneCount}
           />
         </div>
       </div>
