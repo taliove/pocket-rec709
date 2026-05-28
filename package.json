@@ -1,7 +1,7 @@
 {
   "name": "pocket-rec709",
   "private": true,
-  "version": "1.0.2"
+  "version": "1.0.2",
   "type": "module",
   "description": "Drag-and-drop batch converter for DJI D-Log videos. Tiny native desktop app that applies the official Rec.709 LUT via system FFmpeg.",
   "homepage": "https://github.com/taliove/pocket-rec709",
